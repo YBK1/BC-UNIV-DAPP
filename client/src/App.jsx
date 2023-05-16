@@ -15,11 +15,15 @@ function App() {
   return (
     <>
       <EthProvider>
-        <Navbar onChange={handlePageChange} />
-        <div className = {styles.mainbox}>
-          <Mains page={page} />
+        <div className = {styles.all}>
+          <Navbar onChange={handlePageChange} />
+          <div className = {styles.body}>
+            <div className = {styles.mainbox}>
+              <Mains page={page} />
+            </div>
+            <Footer />
+          </div>
         </div>
-        <Footer />
       </EthProvider>
     </>
   );

@@ -1,6 +1,6 @@
 .mybox{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 800px;
+    width: 80vw;
+    height: 90vh;
+    overflow: auto;
 }

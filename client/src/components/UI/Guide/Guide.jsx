@@ -12,6 +12,7 @@ function Guide() {
         <h3>
             2. 
         </h3>
+        <img className = {styles.imgs} src= "imgs/Account.png" alt="Account"></img>
       </div>
     );
   }

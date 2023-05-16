@@ -1,0 +1,7 @@
+.body{
+    margin: 0;
+    border-bottom: black 1px solid;
+    min-width: 75vw;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

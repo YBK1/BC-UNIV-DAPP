@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
 import styles from './Navbar.module.css'
 
 function Navbar(props) {
@@ -10,16 +9,19 @@ function Navbar(props) {
   return (
     <div>
       <nav className = {styles.TopNavbar}>
-        <h1>React</h1>
+        <h1>DID WEB</h1>
         <div className = {styles.btnContainer}>
           <button className = {styles.btn} value="guide" onClick={handleClick}>
-            Home
+            Guide
           </button>
-          <button className = {styles.btn} value="about" onClick={handleClick}>
-            About
+          <button className = {styles.btn} value="student" onClick={handleClick}>
+            Student
           </button>
-          <button className = {styles.btn} value="contact" onClick={handleClick}>
-            Contact
+          <button className = {styles.btn} value="university" onClick={handleClick}>
+            University
+          </button>
+          <button className = {styles.btn} value="verifier" onClick={handleClick}>
+            Verifier
           </button>
         </div>
       </nav>
