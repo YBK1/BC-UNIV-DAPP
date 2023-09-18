@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+.body{
+    display: flex;
+    align-items: end;
+    margin-bottom: 3px;
+}
+.cbox{
+    width:25px;
+    height:25px;
+    vertical-align: middle;
+}
+.cboxlabel{
+    font-size: large;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-left: 5px;
+    vertical-align: middle;
+}

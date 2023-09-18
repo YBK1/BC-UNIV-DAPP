@@ -1,8 +1,14 @@
-function StudentTitle() {
+import styles from "./StudentTitle.module.css";
+
+function StudentTitle({onButtonClick}) {
     return (
-        <h2>이 화면은 DID를 등록한 학생들만 사용 가능합니다.</h2>
+      <div className = {styles.buttonContainer}> 
+        <button onClick={() => onButtonClick('Registry')}>Registry</button>
+        <button onClick={() => onButtonClick('Receiving')}>Receiving</button>
+        <button onClick={() => onButtonClick('DecodeFile')}>Decodeing</button>
+        <button onClick={() => onButtonClick('SettingPDF')}>SettingPDF</button>
+      </div>
     );
   }
   
-  export default StudentTitle;
-  
+export default StudentTitle;

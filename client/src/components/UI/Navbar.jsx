@@ -23,6 +23,7 @@ function Navbar(props) {
           <button className = {styles.btn} value="verifier" onClick={handleClick}>
             Verifier
           </button>
+          
         </div>
       </nav>
     </div>
