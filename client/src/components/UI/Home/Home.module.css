@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Handlee&family=Lobster&display=swap');
+@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.container{
+    width: 100%;
+}
+.title{
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lobster', cursive;
+    padding-top: 16rem;
+    padding-bottom: 16rem;
+    border-bottom: 0.5px gray solid;
+}
+.main{
+    padding-bottom: 3rem;
+    border-bottom: 0.5px gray solid;
+}
+.grid{
+    height: 50rem;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+.ingrid{
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ingrid h3{
+    font-size: 4rem;
+    padding: 2rem;
+    font-family: 'Handlee', cursive;
+}
+.ingrid p{
+    padding: 2rem;
+    font-size: 2rem;
+    font-family: 'omyu_pretty';
+}
+.iconContainer{
+    width: 80%;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+}
+.icon{
+    width: 80%;
+    height: 30rem;
+    padding-top: 2px;
+    margin-right: 5px;
+}
+
+
+.span {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    background-color: #666;
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    transition: 0.5s;
+    margin-left: 1.5rem;
+}
+.optiondiv {
+    position: relative;
+    width: 80rem;
+    padding-left: 1.5rem;
+    padding-top: 2.5rem;
+}
+.option {
+    font-size: 13px;
+    color: #222222;
+    width: 80rem;
+    border: none;
+    border-bottom: solid #aaaaaa 1px;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    position: relative;
+    background: none;
+    z-index: 5;
+}
+.option::placeholder { color: #aaaaaa; }
+.option:focus { outline: none; }
+.optionLabel {
+    position: absolute;
+    color: #aaa;
+    font-size: 13px;
+    bottom: 1rem;
+    transition: all .2s;
+  }
+.option:focus ~ label, .option:valid ~ label {
+    font-size: 13px;
+    bottom: 3rem;
+    color: #666;
+    font-weight: bold;
+    padding-left: 1rem;
+  }
+.option:focus ~ span, option:valid ~ span {
+    width: 100%;
+}
+.managebox{
+    display: flex;
+    justify-content: space-between;
+}
+.btnContainer{
+    display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: flex-end;
+}

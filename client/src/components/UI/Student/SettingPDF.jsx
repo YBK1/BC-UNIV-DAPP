@@ -57,9 +57,9 @@ function SettingPDF(props){
 
     return (
       <div>
-        <div className = {styles.top}>
-          <span>Decoding 파트에서 데이터를 복호화하는데 성공했다면 좌측에 증명서의 내용이 표시됩니다.</span>
-          <p>증명서의 내용 중 PDF 파일에 포함시킬 부분만 선택하여 발급 버튼을 누르면 PDF 파일을 다운로드 할 수 있습니다.</p>
+        <div className = {styles.main}>
+          <p>좌측에 표시되는 증명서의 내용이 정확한지 꼭 확인하세요</p>
+          <p>확인했다면, PDF파일에 포함시킬 내용을 선택하고 PDF파일을 만들어보세요</p>
         </div>
         <div className = {styles.body}>
           <div className = {styles.leftBox}>
@@ -69,7 +69,7 @@ function SettingPDF(props){
           </div>
           <div className = {styles.rightBox}>
             <article className = {styles.container}>
-              <header>
+              <header className = {styles.header}>
                 <h1 className = {styles.head}>PDF에서 포함 시킬 요소를 선택하세요</h1>
               </header>
               <div className ={styles.checkboxContainer}>
@@ -95,12 +95,12 @@ function SettingPDF(props){
                   전공평점
                 </Checkbox>
               </div>
-              <footer className = {styles.footer}>
-                <button className = {styles.btn} onClick = {printPDF}>PDF 생성하기</button>
-              </footer>
             </article>
           </div>
         </div>
+        <footer className = {styles.footer}>
+          <button className = {styles.btn} onClick = {printPDF}>PDF 생성하기</button>
+        </footer>
       </div>
     );
 }

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+.dropdown{
+  position : relative;
+  display : inline-block;
+}
+
+.dropbtn_icon{
+  font-family : 'Material Icons';
+}
+.dropbtn{
+  border : none;
+  border-radius : 4px;
+  background-color: #262626;
+  font-weight: 400;
+  color : #d3d4d4;
+  padding : 12px;
+  width : 120px;
+  text-align: left;
+  font-size : 12px;
+  cursor: pointer;
+  font-family: 'Playball', cursive;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+}
+.dropdown_content{
+  border-radius: 2rem;
+  display : none;
+  position : absolute;
+  z-index : 99; /*다른 요소들보다 앞에 배치*/
+  font-weight: 400;
+  background-color: #858687;;
+  min-width : 120px;
+  cursor: pointer;
+}
+
+.dropdown_content li{
+  list-style: none;
+  display : block;
+  text-decoration : none;
+  color : #262626;
+  font-size: 12px;
+  padding : 12px 20px;
+}
+
+.dropdown_content li:hover{
+  background-color : #ececec;
+  border-radius: 2rem;
+}
+
+.dropdown:hover .dropdown_content {
+  display: block;
+}

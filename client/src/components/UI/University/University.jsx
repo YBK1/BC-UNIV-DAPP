@@ -3,7 +3,6 @@ import NoticeNoArtifact from "../../Demo/NoticeNoArtifact";
 import NoticeWrongNetwork from "../../Demo/NoticeWrongNetwork";
 
 import useEth from "../../../contexts/EthContext/useEth";
-import UniversityTitle from "./UniversityTitle";
 import CreateVC from "./CreateVC";
 
 function University() {
@@ -15,7 +14,6 @@ function University() {
         !state.artifacts ? <NoticeNoArtifact /> :
           !state.contracts ? <NoticeWrongNetwork /> :
             <div>
-              {/* <UniversityTitle></UniversityTitle> */}
               <CreateVC></CreateVC>
             </div>
       }

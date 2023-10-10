@@ -1,6 +1,3 @@
 .mybox{
     display: flex;
-    width: 80vw;
-    height: 90vh;
-    overflow: auto;
 }

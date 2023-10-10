@@ -1,63 +1,26 @@
-.top{
-    width: 100%;
-    height: 20%;
-    font-family: 'Courier New', Courier, monospace;
-    font-style: italic;
-    font-size: 12px;
-    margin-bottom: 10px;
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
-.inputdiv {
-    position: relative;
-    width: 600px;
-    margin-left: 10px;
-    margin-top: 40px;
-}
-.input {
-    font-size: 13px;
-    color: #222222;
-    width: 600px;
-    border: none;
-    border-bottom: solid #aaaaaa 1px;
-    padding-bottom: 3px;
-    padding-left: 3px;
-    position: relative;
-    background: none;
-    z-index: 5;
-}
-.input::placeholder { color: #aaaaaa; }
-.input:focus { outline: none; }
+
 .span {
     display: block;
     position: absolute;
     bottom: 0;
-    left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+    left: 0%;
     background-color: #666;
     width: 0;
     height: 2px;
     border-radius: 2px;
     transition: 0.5s;
+    margin-left: 1.5rem;
 }
-.inputLabel {
-    position: absolute;
-    color: #aaa;
-    font-size: 13px;
-    left: 2px;
-    bottom: 8px;
-    transition: all .2s;
-  }
-.input:focus ~ label, .input:valid ~ label {
-    font-size: 13px;
-    bottom: 23px;
-    color: #666;
-    font-weight: bold;
-  }
-  
-.input:focus ~ span, input:valid ~ span {
-    width: 100%;
-}
-.form{
-    position: relative;
-    width: 800px;
+.btnContainer{
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
 }
 .btn {
     color: #444444;
@@ -67,12 +30,7 @@
     border-radius: 2px;
     font-weight: bold;
     font-size: 9pt;
-    outline: none;
-    position: absolute;
-    bottom: 0;
-    right: 0;
 }
-
 .btn:hover {
     border: 1px #C6C6C6 solid;
     box-shadow: 1px 1px 1px #EAEAEA;
@@ -82,4 +40,60 @@
 
 .btn:active {
     box-shadow: inset 1px 1px 1px #DFDFDF;   
+}
+.title{
+    padding-top: 13rem;
+    padding-bottom: 8rem;
+    font-size: 2.875rem;
+    text-align: center;
+    font-family: 'Kalam', cursive;
+}
+.optionBox{
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    border-radius: 3rem;
+    margin-bottom: 5rem;
+}
+.main{
+    padding-top: 1rem;
+    padding-bottom: 7rem;
+    font-size: 1.85rem;
+    text-align: center;
+    font-family: 'HakgyoansimWoojuR';
+}
+.optiondiv {
+    position: relative;
+    width: 115rem;
+    padding-left: 1.5rem;
+    padding-top: 2.5rem;
+}
+.option {
+    font-size: 13px;
+    color: #222222;
+    width: 115rem;
+    border: none;
+    border-bottom: solid #aaaaaa 1px;
+    padding-bottom: 1rem;
+    padding-left: 0.1rem;
+    position: relative;
+    background: none;
+    z-index: 5;
+}
+.option::placeholder { color: #aaaaaa; }
+.option:focus { outline: none; }
+.optionLabel {
+    position: absolute;
+    color: #aaa;
+    font-size: 13px;
+    bottom: 1rem;
+    transition: all .2s;
+  }
+.option:focus ~ label, .option:valid ~ label {
+    font-size: 13px;
+    bottom: 3rem;
+    color: #666;
+    font-weight: bold;
+  }
+.option:focus ~ span, option:valid ~ span {
+    width: 100%;
 }
