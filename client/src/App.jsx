@@ -2,7 +2,6 @@ import { EthProvider } from "./contexts/EthContext";
 import React, { useState } from 'react';
 import Navbar from './components/UI/Navbar';
 import Mains from './components/UI/Mains';
-import Footer from './components/UI/Footer';
 import styles from "./App.module.css";
 
 function App() {
@@ -18,10 +17,7 @@ function App() {
         <div className = {styles.all}>
           <Navbar onChange={handlePageChange} />
           <div className = {styles.body}>
-            <div className = {styles.mainbox}>
-              <Mains page={page} />
-            </div>
-            <Footer />
+            <Mains page={page} />
           </div>
         </div>
       </EthProvider>

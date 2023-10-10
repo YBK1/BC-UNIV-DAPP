@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import styles from "./DecodeFile.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolderOpen } from '@fortawesome/free-solid-svg-icons'
+import SettingPDF from "./SettingPDF";
 
-const DecodeFile = (props) => {
+const DecodeFile = () => {
   const [encryptedData, setEncryptedData] = useState();
   const [encryptedKey, setEncryptedKey] = useState();
   const [encryptedIV, setEncryptedIV] = useState();
   const [privateKey, setPrivateKey] = useState();
-  const [decryptedJSON, setDecryptedJSON] = useState();
+  const [decryptedJSON, setDecryptedJSON] = useState('암호화된 데이터들을 입력해주세요!');
 
   const forge = require('node-forge');
 
@@ -31,7 +30,8 @@ const DecodeFile = (props) => {
     const decryptedResult = JSON.parse(decryptedData);
 
     setDecryptedJSON(decryptedResult);
-    props.setVC(decryptedResult);
+
+    alert('복호화가 완료되었습니다!');
   }
 
   const handleFileChange = (event, setFunc) => {
@@ -49,12 +49,18 @@ const DecodeFile = (props) => {
 
   return (
     <div className = {styles.body}>
+      <div className = {styles.title}>
+        Decode data and get your certificate
+      </div>
+      <div className = {styles.main}>
+        <p>
+          IPFS에서 다운로드받은 암호화된 데이터들을 항목에 맞게 업로드해 주세요
+        </p>
+        <p>
+          복호화가 진행되고 증명서의 내용을 확인할 수 있습니다
+        </p>
+      </div>
       <div className = {styles.bigContainer}>
-        <div className = {styles.top}>
-          <span>IPFS를 통해 다운로드 받은 데이터들을 복호화해 증명서를 얻을 수 있습니다.</span>
-          <p>Encrypted Data / Encrypted Key / Encrypted IV 순으로 업로드 해야 합니다.</p>
-          <p>처음 시스템 등록시 발급 받았던 암호화 키를 또한 업로드합니다.</p>
-        </div>
         <div className = {styles.inputbox}>
           <div className = {styles.inputcontainer}>
             <label htmlFor="data" className = {styles.inputLabel}>Upload Encrypted Data: </label>
@@ -77,11 +83,7 @@ const DecodeFile = (props) => {
       <div className = {styles.btnContainer}>
         <button className = {styles.btn} onClick = {() => dataDecoding()}>복호화</button>
       </div>
-      <div className = {styles.message}>
-        {decryptedJSON && (
-          <div>복호화가 완료되었습니다. SettingPDF로 이동하여 PDF 파일로 증명서를 발급받으세요</div>
-        )}
-      </div>
+      <SettingPDF vc = {decryptedJSON}></SettingPDF>
     </div>
   );
 }

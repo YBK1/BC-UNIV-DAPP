@@ -118,80 +118,98 @@ const CreateVC = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if(!(userAddress && accessToken)){
+      alert('Please enter transfer information!');
+    }
+
     await setHash();
     await handleUpload();
   };
 
   return (
     <div>
-      <div className = {styles.top}>
-        <p>증명서 발급을 요청한 학생의 Ethereum 주소를 먼저 입력하고 항목에 맞추어 학생의 정보를 입력합니다.</p>
-        <p>Web3Storage의 API token 값을 입력하고 발급 버튼을 누르면 발급이 완료됩니다.</p>
+      <div className = {styles.title}>
+        <p>Issuing certificate with DIDWEB</p>
       </div>
-      <div className = {styles.inputdiv}>
-        <input type="text" name="Address" className = {styles.input} value={userAddress} onChange={handleAddressChange} required />
-        <label htmlFor="Address" className = {styles.inputLabel}>Ethereum Address of Student</label>
-        <span className = {styles.span}></span>
+      <div className = {styles.main}>
+        <p>학생이 증명서 발급을 요청했다면, 바로 여기에서 발급을 시도해보세요!</p>
+        <p>IPFS를 통해서 학생에게 증명서를 전달하고, 블록체인에 검증용 데이터를 남깁니다.</p>
       </div>
-      <div className = {styles.inputdiv}>
-        <input type="text" name="token" className = {styles.input} value={accessToken} onChange={handleTokenChange} required />
-        <label htmlFor="token" className = {styles.inputLabel}>Web3Storage API token</label>
-        <span className = {styles.span}></span>
+      <div className = {styles.optionBox}>
+        <div className = {styles.main}>
+          <p>IPFS 전달을 위한 정보를 입력하세요</p>
+        </div>
+        <div className = {styles.optiondiv}>
+          <input type="text" name="Address" className = {styles.option} value={userAddress} onChange={handleAddressChange} required />
+          <label htmlFor="Address" className = {styles.optionLabel}>Ethereum Address of Student</label>
+          <span className = {styles.span}></span>
+        </div>
+        <div className = {styles.optiondiv}>
+          <input type="text" name="token" className = {styles.option} value={accessToken} onChange={handleTokenChange} required />
+          <label htmlFor="token" className = {styles.optionLabel}>Web3Storage API token</label>
+          <span className = {styles.span}></span>
+        </div>
       </div>
-      <form onSubmit={handleSubmit} className = {styles.form}>
-        <div className = {styles.inputdiv}>
-          <input type="text" name="Name" className = {styles.input} value={formData.Name} onChange={handleChange} required />
-          <label htmlFor="name" className = {styles.inputLabel}>Name</label>
-          <span className = {styles.span}></span>
+      <div className = {styles.optionBox}>
+        <div className = {styles.main}>
+          항목에 맞게 학생에게 발급할 증명서의 내용을 입력하세요
         </div>
-        <div className = {styles.inputdiv}>
-          <input type="text" name="Gender" className = {styles.input} value={formData.Gender} onChange={handleChange} required />
-          <label htmlFor="Gender" className = {styles.inputLabel}>Gender</label>
-          <span className = {styles.span}></span>
-        </div>
-        <div className = {styles.inputdiv}>
-          <input type="text" name="Birthday" className = {styles.input} value={formData.Birthday} onChange={handleChange} required />
-          <label htmlFor="Birthday" className = {styles.inputLabel}>Birthday</label>
-          <span className = {styles.span}></span>
-        </div>
-        <div className = {styles.inputdiv}>
-          <input type="text" name="University" className = {styles.input} value={formData.University} onChange={handleChange} required />
-          <label htmlFor="University" className = {styles.inputLabel}>University</label>
-          <span className = {styles.span}></span>
-        </div>
-        <div className = {styles.inputdiv}>
-          <input type="text" name="StudentId" className = {styles.input} value={formData.StudentId} onChange={handleChange} required />
-          <label htmlFor="StudentId" className = {styles.inputLabel}>StudentId</label>
-          <span className = {styles.span}></span>
-        </div>
-        <div className = {styles.inputdiv}>
-          <input type="text" name="Major" className = {styles.input} value={formData.Major} onChange={handleChange} required />
-          <label htmlFor="Major" className = {styles.inputLabel}>Major</label>
-          <span className = {styles.span}></span>
-        </div>
-        <div className = {styles.inputdiv}>
-          <input type="text" name="AdmissionDate" className = {styles.input} value={formData.AdmissionDate} onChange={handleChange} required />
-          <label htmlFor="AdmissionDate" className = {styles.inputLabel}>AdmissionDate</label>
-          <span className = {styles.span}></span>
-        </div>
-        <div className = {styles.inputdiv}>
-          <input type="text" name="GraduationDate" className = {styles.input} value={formData.GraduationDate} onChange={handleChange} required />
-          <label htmlFor="GraduationDate" className = {styles.inputLabel}>GraduationDate</label>
-          <span className = {styles.span}></span>
-        </div>
-        <div className = {styles.inputdiv}>
-          <input type="text" name="OverallGrade" className = {styles.input} value={formData.OverallGrade} onChange={handleChange} required />
-          <label htmlFor="OverallGrade" className = {styles.inputLabel}>OverallGrade</label>
-          <span className = {styles.span}></span>
-        </div>
-        <div className = {styles.inputdiv}>
-          <input type="text" name="MajorGrade" className = {styles.input} value={formData.MajorGrade} onChange={handleChange} required />
-          <label htmlFor="MajorGrade" className = {styles.inputLabel}>MajorGrade</label>
-          <span className = {styles.span}></span>
-        </div>
-        <button type="submit" className = {styles.btn}>발급하기</button>
-      </form>
-      
+        <form onSubmit={handleSubmit} className = {styles.form}>
+          <div className = {styles.optiondiv}>
+            <input type="text" name="Name" className = {styles.option} value={formData.Name} onChange={handleChange} required />
+            <label htmlFor="name" className = {styles.optionLabel}>Name</label>
+            <span className = {styles.span}></span>
+          </div>
+          <div className = {styles.optiondiv}>
+            <input type="text" name="Gender" className = {styles.option} value={formData.Gender} onChange={handleChange} required />
+            <label htmlFor="Gender" className = {styles.optionLabel}>Gender</label>
+            <span className = {styles.span}></span>
+          </div>
+          <div className = {styles.optiondiv}>
+            <input type="text" name="Birthday" className = {styles.option} value={formData.Birthday} onChange={handleChange} required />
+            <label htmlFor="Birthday" className = {styles.optionLabel}>Birthday</label>
+            <span className = {styles.span}></span>
+          </div>
+          <div className = {styles.optiondiv}>
+            <input type="text" name="University" className = {styles.option} value={formData.University} onChange={handleChange} required />
+            <label htmlFor="University" className = {styles.optionLabel}>University</label>
+            <span className = {styles.span}></span>
+          </div>
+          <div className = {styles.optiondiv}>
+            <input type="text" name="StudentId" className = {styles.option} value={formData.StudentId} onChange={handleChange} required />
+            <label htmlFor="StudentId" className = {styles.optionLabel}>StudentId</label>
+            <span className = {styles.span}></span>
+          </div>
+          <div className = {styles.optiondiv}>
+            <input type="text" name="Major" className = {styles.option} value={formData.Major} onChange={handleChange} required />
+            <label htmlFor="Major" className = {styles.optionLabel}>Major</label>
+            <span className = {styles.span}></span>
+          </div>
+          <div className = {styles.optiondiv}>
+            <input type="text" name="AdmissionDate" className = {styles.option} value={formData.AdmissionDate} onChange={handleChange} required />
+            <label htmlFor="AdmissionDate" className = {styles.optionLabel}>AdmissionDate</label>
+            <span className = {styles.span}></span>
+          </div>
+          <div className = {styles.optiondiv}>
+            <input type="text" name="GraduationDate" className = {styles.option} value={formData.GraduationDate} onChange={handleChange} required />
+            <label htmlFor="GraduationDate" className = {styles.optionLabel}>GraduationDate</label>
+            <span className = {styles.span}></span>
+          </div>
+          <div className = {styles.optiondiv}>
+            <input type="text" name="OverallGrade" className = {styles.option} value={formData.OverallGrade} onChange={handleChange} required />
+            <label htmlFor="OverallGrade" className = {styles.optionLabel}>OverallGrade</label>
+            <span className = {styles.span}></span>
+          </div>
+          <div className = {styles.optiondiv}>
+            <input type="text" name="MajorGrade" className = {styles.option} value={formData.MajorGrade} onChange={handleChange} required />
+            <label htmlFor="MajorGrade" className = {styles.optionLabel}>MajorGrade</label>
+            <span className = {styles.span}></span>
+          </div>
+          <div className = {styles.btnContainer}>
+            <button type="submit" className = {styles.btn}>발급하기</button>
+          </div>
+        </form>
+      </div>
       {/* <div>
         <label htmlFor="majorGrade" className = {styles.inputLabel}>IPFS Upload</label>
         <input type="text" value={accessToken} onChange={handleTokenChange} required />
