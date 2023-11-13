@@ -30,11 +30,8 @@ function Registry() {
   // };
 
   const write = async () => {
-    console.log(await readID());
-    console.log(accounts[0])
-
     if(await readID() === accounts[0]){
-      alert('You have already signed up');
+      alert('이미 사용자 등록이 되어있는 주소입니다.');
     }
     else{
       const keyPair = generateKeyPair();
@@ -47,6 +44,7 @@ function Registry() {
       link.click();
 
       await contracts[0].methods.write(accounts[0], accounts[0], (await keyPair).publicKey).send({ from: accounts[0] });
+      alert('사용자 등록이 완료되었습니다.');
     }
   };
 

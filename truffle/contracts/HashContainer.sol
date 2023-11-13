@@ -48,6 +48,38 @@ contract HashContainer {
         _; 
     }
 
+    function setHashVal1(
+        address myAddress,
+        bytes32 name,
+        bytes32 gender,
+        bytes32 birthday) public onlyUniversity(){
+        hashContainer[myAddress]._name = name;
+        hashContainer[myAddress]._gender = gender;
+        hashContainer[myAddress]._birthday = birthday;
+    }
+
+    function setHashVal2(
+        address myAddress,
+        bytes32 university,
+        bytes32 studentId,
+        bytes32 major) public onlyUniversity(){
+        hashContainer[myAddress]._university = university;
+        hashContainer[myAddress]._studentId = studentId;
+        hashContainer[myAddress]._major = major;
+    }
+
+    function setHashVal3(
+        address myAddress,
+        bytes32 admissionDate,
+        bytes32 graduationDate,
+        bytes32 overallGrade,
+        bytes32 majorGrade) public onlyUniversity(){
+        hashContainer[myAddress]._admissionDate = admissionDate;
+        hashContainer[myAddress]._graduationDate = graduationDate;
+        hashContainer[myAddress]._overallGrade = overallGrade;
+        hashContainer[myAddress]._majorGrade = majorGrade;
+    }
+
     function setHash(
         address myAddress,
         bytes32 name,
@@ -62,16 +94,9 @@ contract HashContainer {
         bytes32 majorGrade
     ) public onlyUniversity(){
         // hashContainer에 새로운 struct를 추가한다
-        hashContainer[myAddress]._name = name;
-        hashContainer[myAddress]._gender = gender;
-        hashContainer[myAddress]._birthday = birthday;
-        hashContainer[myAddress]._university = university;
-        hashContainer[myAddress]._studentId = studentId;
-        hashContainer[myAddress]._major = major;
-        hashContainer[myAddress]._admissionDate = admissionDate;
-        hashContainer[myAddress]._graduationDate = graduationDate;
-        hashContainer[myAddress]._overallGrade = overallGrade;
-        hashContainer[myAddress]._majorGrade = majorGrade;
+        setHashVal1(myAddress, name, gender, birthday);
+        setHashVal2(myAddress, university, studentId, major);
+        setHashVal3(myAddress, admissionDate, graduationDate, overallGrade, majorGrade);
     }
 
     function getHash(address myAddress) public view returns(

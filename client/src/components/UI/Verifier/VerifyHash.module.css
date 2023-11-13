@@ -4,6 +4,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'MBC1961GulimM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC1961GulimM.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 .title{
     padding-top: 13rem;
     padding-bottom: 8rem;
@@ -101,6 +107,7 @@
     align-items: center;
     width: 49%;
     height: 100%;
+    font-family: 'MBC1961GulimM';
 }
 .detail{
     display: flex;
@@ -113,7 +120,6 @@
 
 .body{
     padding-top: 10rem;
-    border-top: 0.5px gray solid;
     display: flex;
     flex-direction: column;
     align-items: center;

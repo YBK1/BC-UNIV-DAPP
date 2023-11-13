@@ -4,7 +4,11 @@
     font-weight: normal;
     font-style: normal;
 }
-
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .span {
     display: block;
     position: absolute;

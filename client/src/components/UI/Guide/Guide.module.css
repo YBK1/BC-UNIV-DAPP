@@ -1,6 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius&family=Kalam:wght@700&display=swap');
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.index{
+    margin:0;
+    width: 100%;
+    height: 100%;
+}
 .box{
-    width: 80%;
+    padding-bottom: 4rem;
+}
+a:link {
+    color: blue;
+    text-decoration-line: none;
+}
+ 
+a:visited {
+    color: blue;
+    text-decoration-line: none;
+}
+ 
+a:hover {
+    color: red;
+    text-decoration-line: none;
+}
+.title{
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    padding-left: 15rem;
+    font-size: 2.875rem;
+    /* text-align: center; */
+    font-family: 'HakgyoansimWoojuR';
+}
+.main{
+    padding-top: 1rem;
+    padding-left: 15rem;
+    font-size: 1.85rem;
+    /* text-align: center; */
+    font-family: 'HakgyoansimWoojuR';
 }
 .imgs{
-    width: 99%;
+    margin-left: 15rem;
+    padding-top: 1rem;
+    width: 50%;
+    height: 30rem;
+}
+.downloadimg{
+    padding-top: 1rem;
+    padding-right: 5rem;
+    width: 45%;
+    height: 30rem;
+}
+.metamaskbox{
+    display: flex;
+    align-items: center;
+}
+.rowimg{
+    width: 20%;
+    height: 40rem;
+    padding-top: 1rem;
+    padding-right: 3rem;
+}
+.colimg{
+    margin-left: 15rem;
+    padding-top: 1rem;
+    width: 80%;
+    height: 30rem;
 }

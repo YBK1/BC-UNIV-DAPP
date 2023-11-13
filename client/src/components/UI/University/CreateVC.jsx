@@ -23,23 +23,6 @@ const CreateVC = () => {
 
   const forge = require('node-forge');
 
-  // 이더리움에 JSON 각각 정보 Hash값을 저장
-  const setHash = async () => {
-    await contracts[1].methods.setHash(
-      userAddress,
-      web3.utils.soliditySha3({t: 'string', v: formData.Name.toString()}),
-      web3.utils.soliditySha3({t: 'string', v: formData.Gender.toString()}),
-      web3.utils.soliditySha3({t: 'string', v: formData.Birthday.toString()}),
-      web3.utils.soliditySha3({t: 'string', v: formData.University.toString()}),
-      web3.utils.soliditySha3({t: 'string', v: formData.StudentId.toString()}),
-      web3.utils.soliditySha3({t: 'string', v: formData.Major.toString()}),
-      web3.utils.soliditySha3({t: 'string', v: formData.AdmissionDate.toString()}),
-      web3.utils.soliditySha3({t: 'string', v: formData.GraduationDate.toString()}),
-      web3.utils.soliditySha3({t: 'string', v: formData.OverallGrade.toString()}),
-      web3.utils.soliditySha3({t: 'string', v: formData.MajorGrade.toString()})
-    ).send({from: accounts[0]});
-  }
-
   // JSON데이터를 publicKey에 의해서 암호화하기
   const encryptData = async (publicKey) => {
     const jsonToString = JSON.stringify(formData);
@@ -68,14 +51,13 @@ const CreateVC = () => {
   
 
   const uploadIPFS = async (objs) => {
-    console.log(objs);
-
     const getAccessToken = () => {
       return accessToken;
     }
     
     const makeStorageClient = () => {
-      return new Web3Storage({ token: getAccessToken() })
+      const client =  new Web3Storage({ token: getAccessToken() });
+      return client;
     }
 
     const storeFiles = async (objs) => {
@@ -85,18 +67,44 @@ const CreateVC = () => {
         new File([objs.iv], 'Encrypted_iv.txt', {type: 'text/plain'})
       ]
 
-      const client = makeStorageClient()
-      const cid = await client.put(files)
+      let client;
+      let cid;
 
-      await contracts[2].methods.add(userAddress, cid).send({from: accounts[0]});
+      try{
+        client = makeStorageClient();
+        cid = await client.put(files);
+      }
+      catch(error){
+        alert('유효한 Web3.storage API 토큰이 아닙니다');
+      }
+      finally{
+        // transaction batch 처리하기
+        const cidAdd = contracts[2].methods.add(userAddress, cid).send({from: accounts[0]});
+        const hashAdd = contracts[1].methods.setHash(
+          userAddress,
+          web3.utils.soliditySha3({t: 'string', v: formData.Name.toString()}),
+          web3.utils.soliditySha3({t: 'string', v: formData.Gender.toString()}),
+          web3.utils.soliditySha3({t: 'string', v: formData.Birthday.toString()}),
+          web3.utils.soliditySha3({t: 'string', v: formData.University.toString()}),
+          web3.utils.soliditySha3({t: 'string', v: formData.StudentId.toString()}),
+          web3.utils.soliditySha3({t: 'string', v: formData.Major.toString()}),
+          web3.utils.soliditySha3({t: 'string', v: formData.AdmissionDate.toString()}),
+          web3.utils.soliditySha3({t: 'string', v: formData.GraduationDate.toString()}),
+          web3.utils.soliditySha3({t: 'string', v: formData.OverallGrade.toString()}),
+          web3.utils.soliditySha3({t: 'string', v: formData.MajorGrade.toString()})
+        ).send({from: accounts[0]});
 
-      return cid
+        const batch = new web3.BatchRequest();
+        batch.add(cidAdd);
+        batch.add(hashAdd);
+
+        batch.execute();
+      }
     }
 
     storeFiles(objs);
   }
 
-  // IPFS에 암호화된 VC를 올린다
   const handleUpload = async () => {
     const pubk = await contracts[0].methods.readPubkey(userAddress).call({ from: accounts[0] });
 
@@ -119,17 +127,24 @@ const CreateVC = () => {
     e.preventDefault();
 
     if(!(userAddress && accessToken)){
-      alert('Please enter transfer information!');
+      alert('IPFS 전달을 위한 정보를 입력해주세요');
+      return;
     }
 
-    await setHash();
+    const isValidHex = (value) => /^0x[0-9A-Fa-f]+$/.test(value);
+    if(!isValidHex(userAddress)){
+      alert('유효한 이더리움 주소가 아닙니다.');
+      return;
+    }
+
+    // await setHash();
     await handleUpload();
   };
 
   return (
-    <div>
+    <div className = {styles.container}>
       <div className = {styles.title}>
-        <p>Issuing certificate with DIDWEB</p>
+        <p>Issuing certificate</p>
       </div>
       <div className = {styles.main}>
         <p>학생이 증명서 발급을 요청했다면, 바로 여기에서 발급을 시도해보세요!</p>
@@ -210,12 +225,6 @@ const CreateVC = () => {
           </div>
         </form>
       </div>
-      {/* <div>
-        <label htmlFor="majorGrade" className = {styles.inputLabel}>IPFS Upload</label>
-        <input type="text" value={accessToken} onChange={handleTokenChange} required />
-        <button onClick={handleUpload}>Upload To IPFS</button>
-      </div> */}
-      
     </div>
   );
 };

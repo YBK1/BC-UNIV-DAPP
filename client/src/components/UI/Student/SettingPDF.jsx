@@ -70,7 +70,7 @@ function SettingPDF(props){
           <div className = {styles.rightBox}>
             <article className = {styles.container}>
               <header className = {styles.header}>
-                <h1 className = {styles.head}>PDF에서 포함 시킬 요소를 선택하세요</h1>
+                <h1 className = {styles.head}>PDF에서 포함 시킬 항목을 선택하세요</h1>
               </header>
               <div className ={styles.checkboxContainer}>
                 <Checkbox checked={genderCheck} onChange={setGenderCheck}>

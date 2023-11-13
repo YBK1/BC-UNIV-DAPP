@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Navbar.module.css'
 import DropdownButton from './Student/shortComp/DropDown';
+import GuideDrop from './Guide/GuideDrop';
 
 function Navbar(props) {
   const handleClick = (event) => {
@@ -16,11 +17,9 @@ function Navbar(props) {
   return (
     <div className = {styles.main}>
       <nav className = {styles.TopNavbar}>
-        <h1 className = {styles.logo} onClick = {logoClick}>DID WEB</h1>
+        <h1 className = {styles.logo} onClick = {logoClick}>USSIM</h1>
         <div className = {styles.btnContainer}>
-          <button className = {styles.btn} value="guide" onClick={handleClick}>
-            Guide
-          </button>
+          <GuideDrop onClick = {dropClick}></GuideDrop>
           <DropdownButton onClick = {dropClick}></DropdownButton>
           <button className = {styles.btn} value="university" onClick={handleClick}>
             University

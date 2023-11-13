@@ -27,7 +27,7 @@ function Home() {
     return (
       <div className = {styles.container}> 
         <div className = {styles.title}>
-          <h1>Manage your personal Information with DIDWEB</h1>
+          <h1>블록체인과 연동하는 개인정보 자기 주도화 관리 시스템</h1>
         </div>
         <div className = {styles.main}>
             <div className = {styles.grid}>

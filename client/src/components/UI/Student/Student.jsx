@@ -10,7 +10,7 @@ import useEth from "../../../contexts/EthContext/useEth";
 
 function Student(props) {
   const { state } = useEth();
-  const [studentComponent, setStudentComponent] = useState(props.v);
+  const [studentComponent] = useState(props.v);
   const rendering = () => {
     if (studentComponent === 'Registry') {
       return <Registry />;

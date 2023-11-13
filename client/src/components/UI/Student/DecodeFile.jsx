@@ -12,26 +12,32 @@ const DecodeFile = () => {
   const forge = require('node-forge');
 
   const dataDecoding = async () => {
-    const privateKeyObj = forge.pki.privateKeyFromPem(privateKey);
-    const decrypted = privateKeyObj.decrypt(encryptedKey, 'RSA-OAEP', {
-      md: forge.md.sha256.create(),
-    });
-    const decryptedIV = privateKeyObj.decrypt(encryptedIV, 'RSA-OAEP', {
-      md: forge.md.sha256.create(),
-    });
-    const decipher = forge.cipher.createDecipher('AES-CBC', decrypted);
-    decipher.start({iv: decryptedIV});
-    decipher.update(forge.util.createBuffer(encryptedData));
-    decipher.finish();
+    try {
+      const privateKeyObj = forge.pki.privateKeyFromPem(privateKey);
+      const decrypted = privateKeyObj.decrypt(encryptedKey, 'RSA-OAEP', {
+        md: forge.md.sha256.create(),
+      });
+      const decryptedIV = privateKeyObj.decrypt(encryptedIV, 'RSA-OAEP', {
+        md: forge.md.sha256.create(),
+      });
+      const decipher = forge.cipher.createDecipher('AES-CBC', decrypted);
+      decipher.start({iv: decryptedIV});
+      decipher.update(forge.util.createBuffer(encryptedData));
+      decipher.finish();
 
-    const decryptedData = decodeURIComponent(decipher.output);
-    console.log(decipher.output);
-    console.log(decryptedData);
-    const decryptedResult = JSON.parse(decryptedData);
+      const decryptedData = decodeURIComponent(decipher.output);
+      console.log(decipher.output);
+      console.log(decryptedData);
+      const decryptedResult = JSON.parse(decryptedData);
 
-    setDecryptedJSON(decryptedResult);
+      setDecryptedJSON(decryptedResult);
 
-    alert('복호화가 완료되었습니다!');
+      alert('복호화가 완료되었습니다!');
+    } catch (error) {
+      alert('유효하지 않은 파일입니다.');
+    }
+
+    
   }
 
   const handleFileChange = (event, setFunc) => {

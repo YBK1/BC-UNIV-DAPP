@@ -50,7 +50,7 @@ const VerifyHash = () => {
             }
             else{
               result += key + ': 불일치\n';
-              setFinalBool('최종 결과: 무효');
+              setFinalBool('최종 결과: 유효하지 않음\n결과에 이상이 있을 경우, 오타 여부를 확인해보세요');
             }
           }
           index += 1;
@@ -74,7 +74,7 @@ const VerifyHash = () => {
   return (
     <div className = {styles.container}>
       <div className = {styles.title}>
-          Verify Certificate
+          Verifing Certificate
       </div>
       <div className = {styles.main}>
           <p>PDF를 받았다면 여기에서 내용을 검증해보세요</p>
