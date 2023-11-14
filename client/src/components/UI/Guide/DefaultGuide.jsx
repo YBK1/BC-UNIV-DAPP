@@ -19,7 +19,7 @@ function DefaultGuide() {
                     <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer">https://metamask.io/</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;MetaMask 공식 홈페이지로 이동하여 확장 프로그램을 다운로드합니다.
                 </div>
-                <a href = "https://metamask.io/" target = "blank" > <img className = {styles.imgs} src= "imgs/MetaMask.png" alt="MetaMask"></img> </a>
+                <a href = "https://metamask.io/" target = "blank" > <img className = {styles.imgs} src= "${process.env.PUBLIC_URL}/assets/MetaMask.png" alt="MetaMask"></img> </a>
             </div>
             <div className = {styles.box}>
                 <div className = {styles.title}>
