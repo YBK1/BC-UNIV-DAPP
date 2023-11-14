@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const EslintWebpackPlugin = require("eslint-webpack-plugin");
 
 const extensions = [".js", ".jsx"];
-const Dotenv = require('dotenv-webpack')
+const Dotenv = require('dotenv-webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
@@ -52,7 +53,7 @@ module.exports = {
       favicon: "./public/favicon.ico",
     }),
     new Dotenv(),
-    new CopyPlugin({ patterns: [{ from: 'public/assets', to: 'assets/' }] })
+    new CopyPlugin({ patterns: [{ from: 'public/imgs', to: 'imgs/' }] })
   ],
   devServer: {
     static: {
