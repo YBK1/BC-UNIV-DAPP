@@ -1,7 +1,14 @@
 # React client
 
-This react project is unopinionated with only `web3.js` as an added dependency, so nothing stands in your way.
+- Remix를 통해 배포한 Smart Contract의 ABI를 src/contarcs에 포함시킨다.
 
-## Getting started
+- ABI에 하단의 network 설정을 추가한다.
 
-Run `npm start` to start the dev server, and `npm build` to create a production build.
+"networks": {
+		"11155111": {
+		  "events": {},
+		  "links": {},
+		  "address": "---Smart Contract Address---",
+		  "transactionHash": "---Deploy Transaction Hash---"
+		}
+	},
