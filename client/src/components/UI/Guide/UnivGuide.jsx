@@ -9,7 +9,7 @@ function UnivGuide() {
               사전 작업
           </div>
           <div className = {styles.main}>
-              <p>시스템 이용을 위해 사전에 <a href="https://web3.storage/" target="_blank">Web3.storage</a>의 API Token을 획득해야 합니다. Web3.storage에 회원 가입을 한 후 API 화면으로 이동합니다.</p>
+              <p>시스템 이용을 위해 사전에 <a href="https://web3.storage/" target="_blank" rel="noreferrer">Web3.storage</a>의 API Token을 획득해야 합니다. Web3.storage에 회원 가입을 한 후 API 화면으로 이동합니다.</p>
           </div>
           <img className = {styles.imgs} src= "imgs/API.png" alt="API"></img>
           <div className = {styles.main}>

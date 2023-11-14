@@ -19,12 +19,12 @@ function SettingPDF(props){
     const printPDF = async () => {
       const doc = new jsPDF("p", "mm", "a4");
 
-      doc.addFileToVFS('malgun.ttf', MapleFont);  //_fonts 변수는 Base64 형태로 변환된 내용입니다.
+      doc.addFileToVFS('malgun.ttf', MapleFont);  //_fonts 변수는 Base64 형태로 변환된 내용
       doc.addFont('malgun.ttf','malgun', 'normal');
       doc.setFont('malgun'); 
     
       doc.setFontSize(8);
-      doc.text(150, 20, 'Verified credential from didweb');
+      doc.text(150, 20, 'Verified credential from USSIM');
       doc.line(15, 25, 195, 25); // 선그리기(시작x, 시작y, 종료x, 종료y)
       doc.line(15, 290, 195, 290); // 선그리기(시작x, 시작y, 종료x, 종료y)
       doc.text(153, 30, 'Ethereum Address of Student');

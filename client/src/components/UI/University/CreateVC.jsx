@@ -103,6 +103,8 @@ const CreateVC = () => {
     }
 
     storeFiles(objs);
+    alert('증명서 발급이 완료되었습니다.');
+    window.location.reload();
   }
 
   const handleUpload = async () => {
@@ -137,7 +139,32 @@ const CreateVC = () => {
       return;
     }
 
-    // await setHash();
+    const isValidDate = (date) => /^\d{4}\.\d{2}\.\d{2}$/.test(date);
+    if(!isValidDate(formData.Birthday)){
+      alert('생일의 형식이 적절하지 않습니다.');
+      return;
+    }
+
+    const isValidMonth = (month) => /^\d{4}\/\d{2}$/.test(month);
+    if(!isValidMonth(formData.AdmissionDate)){
+      alert('입학일자의 형식이 적절하지 않습니다.');
+      return;
+    }
+    if(!isValidMonth(formData.GraduationDate)){
+      alert('졸업일자의 형식이 적절하지 않습니다.');
+      return;
+    }
+
+    const isValidScore = (score) => /^\d+(\.\d{1,2})?\/\d+(\.\d{1,2})?$/.test(score);
+    if(!isValidScore(formData.MajorGrade)){
+      alert('전공평점의 형식이 적절하지 않습니다.');
+      return;
+    }
+    if(!isValidScore(formData.OverallGrade)){
+      alert('전체평점의 형식이 적절하지 않습니다.');
+      return;
+    }
+
     await handleUpload();
   };
 
@@ -182,7 +209,7 @@ const CreateVC = () => {
           </div>
           <div className = {styles.optiondiv}>
             <input type="text" name="Birthday" className = {styles.option} value={formData.Birthday} onChange={handleChange} required />
-            <label htmlFor="Birthday" className = {styles.optionLabel}>Birthday</label>
+            <label htmlFor="Birthday" className = {styles.optionLabel}>Birthday (YYYY.MM.DD)</label>
             <span className = {styles.span}></span>
           </div>
           <div className = {styles.optiondiv}>
@@ -202,22 +229,22 @@ const CreateVC = () => {
           </div>
           <div className = {styles.optiondiv}>
             <input type="text" name="AdmissionDate" className = {styles.option} value={formData.AdmissionDate} onChange={handleChange} required />
-            <label htmlFor="AdmissionDate" className = {styles.optionLabel}>AdmissionDate</label>
+            <label htmlFor="AdmissionDate" className = {styles.optionLabel}>AdmissionDate (YYYY/MM)</label>
             <span className = {styles.span}></span>
           </div>
           <div className = {styles.optiondiv}>
             <input type="text" name="GraduationDate" className = {styles.option} value={formData.GraduationDate} onChange={handleChange} required />
-            <label htmlFor="GraduationDate" className = {styles.optionLabel}>GraduationDate</label>
+            <label htmlFor="GraduationDate" className = {styles.optionLabel}>GraduationDate (YYYY/MM)</label>
             <span className = {styles.span}></span>
           </div>
           <div className = {styles.optiondiv}>
             <input type="text" name="OverallGrade" className = {styles.option} value={formData.OverallGrade} onChange={handleChange} required />
-            <label htmlFor="OverallGrade" className = {styles.optionLabel}>OverallGrade</label>
+            <label htmlFor="OverallGrade" className = {styles.optionLabel}>OverallGrade (평점/만점)</label>
             <span className = {styles.span}></span>
           </div>
           <div className = {styles.optiondiv}>
             <input type="text" name="MajorGrade" className = {styles.option} value={formData.MajorGrade} onChange={handleChange} required />
-            <label htmlFor="MajorGrade" className = {styles.optionLabel}>MajorGrade</label>
+            <label htmlFor="MajorGrade" className = {styles.optionLabel}>MajorGrade (평점/만점)</label>
             <span className = {styles.span}></span>
           </div>
           <div className = {styles.btnContainer}>
