@@ -19,7 +19,7 @@ function DefaultGuide() {
                     <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer">https://metamask.io/</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;MetaMask 공식 홈페이지로 이동하여 확장 프로그램을 다운로드합니다.
                 </div>
-                <a href = "https://metamask.io/" target = "blank" > <img className = {styles.imgs} src= "${process.env.PUBLIC_URL}/assets/MetaMask.png" alt="MetaMask"></img> </a>
+                <a href = "https://metamask.io/" target = "blank" > <img className = {styles.imgs} src= "assets/MetaMask.png" alt="MetaMask"></img> </a>
             </div>
             <div className = {styles.box}>
                 <div className = {styles.title}>
@@ -27,7 +27,7 @@ function DefaultGuide() {
                 </div>
                 <div className = {styles.main}>
                     <p>MetaMask를 통해 Ethereum Account를 생성하고 웹사이트와 연결해야 하며 네트워크를 설정해 줍니다.</p>
-                    <div classNmae = {styles.metamaskbox}>
+                    <div className = {styles.metamaskbox}>
                         <img className = {styles.rowimg} src= "imgs/Account.png" alt="Account"></img>
                         <img className = {styles.rowimg} src= "imgs/Connect.png" alt="Connect"></img>
                         <img className = {styles.rowimg} src= "imgs/Sepolia.png" alt="Sepolia"></img>
@@ -39,7 +39,7 @@ function DefaultGuide() {
                     기본설정이 완료되었습니다!
                 </div>
                 <div className = {styles.main}>
-                    문제가 발생했을 경우 <a href = "https://metamask.io/institutions/" target = "blank">Metamaks의 Institution</a>을 참고하세요.
+                    문제가 발생했을 경우 <a href = "https://metamask.io/institutions/" target = "blank">MetaMask의 Institution</a>을 참고하세요.
                 </div>
             </div>
         </div>

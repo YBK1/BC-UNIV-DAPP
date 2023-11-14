@@ -51,7 +51,16 @@ module.exports = {
       template: "./public/index.html",
       favicon: "./public/favicon.ico",
     }),
-    new Dotenv()
+    new Dotenv(),
+    new CopyPlugin({ patterns: [{ from: 'public/assets', to: 'assets/' }] })
   ],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public')
+    },
+    compress: true,
+    host: 'localhost',
+    port: 3000
+  },
   stats: "minimal",
 };
