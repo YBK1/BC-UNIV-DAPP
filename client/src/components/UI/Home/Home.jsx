@@ -1,33 +1,13 @@
-import React, { useState } from 'react';
-import useEth from "../../../contexts/EthContext/useEth";
 import styles from "./Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGraduationCap, faSchoolFlag, faAddressCard } from '@fortawesome/free-solid-svg-icons';
-import Footer from "./Footer";
 
 function Home() {
-    const { state: { contracts, accounts } } = useEth();
-    const [manage, setManage] = useState();
-    const [userAddress, setUserAddress] = useState();
-
-    const handleAddressChange = (event) => {
-      setUserAddress(event.target.value);
-    };
-
-    const setAcc = async () => {
-      await contracts[1].methods.setVerifiedUniversity(userAddress).send({ from: accounts[0] })
-      .on('receipt', (receipt) => {
-        alert('대학 인증에 성공했습니다.');
-      })
-      .on('error', (error) => {
-        console.error("Transaction error:", error.message);
-      });;
-    };
 
     return (
       <div className = {styles.container}> 
         <div className = {styles.title}>
-          <h1>블록체인과 연동하는 개인정보 자기 주도화 관리 시스템</h1>
+          <h1>블록체인과 연동하는 개인정보 자기 주권화 신원 증명 시스템</h1>
         </div>
         <div className = {styles.main}>
             <div className = {styles.grid}>
@@ -60,19 +40,6 @@ function Home() {
               </div>
             </div>
         </div>
-        <Footer onChange = {setManage}></Footer>
-        {manage && <div>
-          <div className = {styles.managebox}>
-            <div className = {styles.optiondiv}>
-              <input type="text" name="Address" className = {styles.option} value={userAddress} onChange={handleAddressChange}/>
-              <label htmlFor="Address" className = {styles.optionLabel}>Ethereum Address</label>
-              <span className = {styles.span}></span>
-            </div>
-            <div className = {styles.btnContainer}>
-              <button  className = {styles.btn} onClick = {() => setAcc()}>Set Univ</button>
-            </div>
-          </div>
-        </div>}
       </div>
     );
   }
