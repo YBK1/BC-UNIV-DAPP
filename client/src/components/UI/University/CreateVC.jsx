@@ -98,13 +98,12 @@ const CreateVC = () => {
         batch.add(cidAdd);
         batch.add(hashAdd);
 
-        batch.execute();
+        await batch.execute();
       }
     }
 
-    storeFiles(objs);
-    alert('증명서 발급이 완료되었습니다.');
-    window.location.reload();
+    alert('증명서 발급이 진행중입니다. MetaMask Transaction을 기다려 주세요');
+    await storeFiles(objs);
   }
 
   const handleUpload = async () => {
