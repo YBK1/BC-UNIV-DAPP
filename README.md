@@ -1,22 +1,16 @@
 # USSIM
 
-DAPP사용을 위한 기본 설정
+Ethereum을 사용하는 대학생 신원 증명 DAPP
 
-- Chrome 브라우저 사용, Metamask설치
-- Sepolia Testnet 사용 => SepoliaETH의 보유가 필수
-- Seoplia faucet : https://sepoliafaucet.com/
+전체 구조
 
-Smart Contract 배포를 위한 RemixIDE
+![](https://i.imgur.com/RoywCDu.png)
 
-- https://remix.ethereum.org/
+메인화면
 
-Fleek를 사용한 호스팅시 세팅 기본
+![](https://i.imgur.com/mvbAKGt.png)
 
-- Other
-- Build command : npm install && npm run build
-- Base directory : client
-- Public directory : build
+Ethereum Account를 바탕으로 학생의 사용자 등록 -> 학교 사용자의 개인정보 발급 -> 학생 사용자의 개인정보 저장 -> 학생 사용자의 증명서 발급 -> 검증기관 사용자의 검증
 
-Github push 설정
-
-- .gitignore에서 client/src/contracts 를 제거해야 해당 부분이 Github에 포함된다.
+배포 주소: 
+https://sparkling-cherry-1177.on.fleek.co/
