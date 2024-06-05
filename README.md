@@ -3,6 +3,7 @@
  Ethereum 블록체인을 사용한 대학생 자기주도적 신원 증명 DAPP
 
 전체 구조
+
  ![](https://i.imgur.com/RoywCDu.png)
 
  메인 화면
